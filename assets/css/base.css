@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+SC:wght@400;600&display=swap");
+
+:root {
+  --bg: #0b0f1a;
+  --bg-2: #121a2d;
+  --fg: #eef2f7;
+  --muted: #a6b3c5;
+  --accent: #9bd3c9;
+  --mask: rgba(7, 9, 14, 0.55);
+  --mask-strong: rgba(7, 9, 14, 0.78);
+  --px: 6px;
+  --scene-w: 360px;
+  --scene-h: 220px;
+  --radius: 18px;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft Yahei", sans-serif;
+  --font-title: "Press Start 2P", "Noto Sans SC", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--fg);
+  font-family: var(--font-body);
+  background: radial-gradient(circle at top, #1c263e 0%, var(--bg) 50%, #070a12 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 60%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 8px 8px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home {
+  padding: 64px 20px 80px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.home-hero {
+  margin-bottom: 36px;
+}
+
+.home-kicker {
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-title {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 14px 0 10px;
+}
+
+.home-subtitle {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 560px;
+}
+
+.post-list {
+  display: grid;
+  gap: 18px;
+}
+
+.post-card {
+  display: block;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 14, 22, 0.55);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, border 0.25s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(155, 211, 201, 0.5);
+}
+
+.post-card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.post-card-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.post-card-excerpt {
+  color: var(--fg);
+  opacity: 0.85;
+}
+
+.stage {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px 120px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.scene-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scene-stage {
+  width: var(--scene-w);
+  height: var(--scene-h);
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.scene-stage,
+.scene-stage * {
+  image-rendering: pixelated;
+}
+
+.diary {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+}
+
+.diary-mask {
+  position: relative;
+  padding: 26px 24px 30px;
+  border-radius: var(--radius);
+  background: var(--mask);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.diary-mask::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 45%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.diary-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 18px;
+}
+
+.diary-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  margin: 0 0 8px;
+}
+
+.diary-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.diary-content {
+  position: relative;
+  z-index: 1;
+  line-height: 1.8;
+}
+
+.diary-content p {
+  margin: 0 0 1em;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --scene-w: 320px;
+    --scene-h: 200px;
+    --px: 5px;
+  }
+
+  .stage {
+    padding: 40px 16px 110px;
+  }
+
+  .diary-mask {
+    padding: 20px 18px 24px;
+  }
+}

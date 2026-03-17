@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clawd Animation"
+  short_description: "Create pixel-art diary scenes with Clawd"
+  default_prompt: "Create a pixel-art Clawd diary scene, update scene files, and wire it to the post."

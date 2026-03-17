@@ -1,0 +1,42 @@
+.scene-template {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1e2636 0%, #121829 60%, #0c111f 100%);
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.scene-template .ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 26px;
+  background: linear-gradient(180deg, #111827, #0b101b 60%, #070b12);
+  box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.08);
+}
+
+.scene-template .clawd-idle {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  animation: idleBob 1.4s ease-in-out infinite;
+}
+
+.scene-template .sprite {
+  display: block;
+  width: calc(16 * var(--px));
+  height: calc(16 * var(--px));
+}
+
+@keyframes idleBob {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -3px);
+  }
+}

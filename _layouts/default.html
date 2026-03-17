@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
+    {% if page.scene %}
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/scenes/' | append: page.scene | append: '/scene.css' | relative_url }}"
+    />
+    {% endif %}
+  </head>
+  <body class="{{ page.layout | default: 'page' }}">
+    {{ content }}
+    <script src="{{ '/assets/js/base.js' | relative_url }}"></script>
+    {% if page.scene %}
+    <script src="{{ '/assets/scenes/' | append: page.scene | append: '/scene.js' | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>

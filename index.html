@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<main class="home">
+  <header class="home-hero">
+    <p class="home-kicker">{{ site.description }}</p>
+    <h1 class="home-title">{{ site.title }}</h1>
+    <p class="home-subtitle">每天一篇日记，每天一段动画。</p>
+  </header>
+
+  <section class="post-list">
+    {% for post in site.posts %}
+    <a class="post-card" href="{{ post.url | relative_url }}">
+      <div class="post-card-title">{{ post.title }}</div>
+      <div class="post-card-meta">
+        {{ post.date | date: "%Y-%m-%d" }}{% if post.mood %} · {{ post.mood }}{% endif %}
+      </div>
+      <div class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 90 }}</div>
+    </a>
+    {% endfor %}
+  </section>
+</main>

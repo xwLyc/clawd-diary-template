@@ -1,0 +1,4 @@
+title: Clawd Diary
+description: A daily pixel diary for students
+markdown: kramdown
+permalink: /:year-:month-:day-:title/

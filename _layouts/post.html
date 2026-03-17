@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<main class="stage">
+  <div class="scene-layer">
+    {% if page.scene %}
+    <div class="scene-stage" data-scene="{{ page.scene }}">
+      {% include scenes/{{ page.scene }}.html %}
+    </div>
+    {% endif %}
+  </div>
+
+  <article class="diary">
+    <div class="diary-mask">
+      <header class="diary-header">
+        <h1 class="diary-title">{{ page.title }}</h1>
+        <div class="diary-meta">
+          {{ page.date | date: "%Y-%m-%d" }}{% if page.mood %} · {{ page.mood }}{% endif %}
+        </div>
+      </header>
+      <div class="diary-content">
+        {{ content }}
+      </div>
+    </div>
+  </article>
+</main>

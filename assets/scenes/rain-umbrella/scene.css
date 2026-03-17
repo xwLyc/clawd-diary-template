@@ -1,0 +1,101 @@
+:root {
+  --rain-speed: 1.1s;
+}
+
+.scene-rain {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1b2335 0%, #121829 60%, #0c111f 100%);
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.scene-rain .rain {
+  position: absolute;
+  inset: -40% 0 0 0;
+  background-image: linear-gradient(120deg, rgba(170, 200, 220, 0.7) 2px, transparent 2px);
+  background-size: 14px 18px;
+  animation: rainFall var(--rain-speed) linear infinite;
+  opacity: 0.7;
+}
+
+.scene-rain .ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 26px;
+  background: linear-gradient(180deg, #0c1322, #0a101b 60%, #060a12);
+  box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.08);
+}
+
+.scene-rain .clawd-walk {
+  position: absolute;
+  bottom: 18px;
+  left: -40px;
+  animation: walkAcross 12s linear infinite;
+}
+
+.scene-rain .clawd-actor {
+  position: relative;
+  display: inline-block;
+  animation: bob 0.9s ease-in-out infinite;
+}
+
+.scene-rain .sprite {
+  display: block;
+  width: calc(16 * var(--px));
+  height: calc(16 * var(--px));
+}
+
+.scene-rain .umbrella {
+  position: absolute;
+  width: calc(16 * var(--px));
+  height: calc(16 * var(--px));
+  left: calc(2 * var(--px));
+  top: calc(-8 * var(--px));
+  animation: umbrellaSwing 1.6s ease-in-out infinite;
+}
+
+.scene-rain .clawd {
+  filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.35));
+}
+
+@keyframes rainFall {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -40px 160px;
+  }
+}
+
+@keyframes walkAcross {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(calc(var(--scene-w) + 40px));
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes umbrellaSwing {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
